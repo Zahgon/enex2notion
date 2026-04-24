@@ -1,30 +1,11 @@
 import logging
-
 from bs4 import Tag
-
 from enex2notion.note_parser.blocks import parse_note_blocks
-from enex2notion.note_parser.webclip_stages_cleanup import (
-    fix_redundant_img_src_quotes,
-    remove_empty_blocks,
-    strip_paragraphs,
-    wrap_orphans,
-)
-from enex2notion.note_parser.webclip_stages_convert import (
-    convert_inline_modifiers,
-    convert_newlines,
-    convert_paragraphs,
-    convert_subheaders,
-    convert_textless_links,
-)
+from enex2notion.note_parser.webclip_stages_cleanup import fix_redundant_img_src_quotes, remove_empty_blocks, strip_paragraphs, wrap_orphans
+from enex2notion.note_parser.webclip_stages_convert import convert_inline_modifiers, convert_newlines, convert_paragraphs, convert_subheaders, convert_textless_links
 from enex2notion.note_parser.webclip_stages_flatten import flatten_root
-from enex2notion.note_parser.webclip_stages_preparation import (
-    remove_unprocessable,
-    unpack_block_elements,
-    unpack_tables,
-)
-
+from enex2notion.note_parser.webclip_stages_preparation import remove_unprocessable, unpack_block_elements, unpack_tables
 logger = logging.getLogger(__name__)
-
 
 def parse_webclip(note_dom: Tag):
     """Convert HTML into simplified format, something that Evernote does with "simplify"
@@ -57,28 +38,4 @@ def parse_webclip(note_dom: Tag):
 
     Final. Feed sanitized tree into note parser
     """
-
-    processors = (
-        # Preparation
-        remove_unprocessable,
-        unpack_block_elements,
-        unpack_tables,
-        # Conversion
-        convert_paragraphs,
-        convert_subheaders,
-        convert_inline_modifiers,
-        convert_textless_links,
-        convert_newlines,
-        # Flattening
-        flatten_root,
-        # Cleanup
-        remove_empty_blocks,
-        wrap_orphans,
-        strip_paragraphs,
-        fix_redundant_img_src_quotes,
-    )
-
-    for processor in processors:
-        processor(note_dom)
-
-    return parse_note_blocks(note_dom)
+    pass

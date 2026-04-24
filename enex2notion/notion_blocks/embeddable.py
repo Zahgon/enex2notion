@@ -13,31 +13,27 @@ class NotionEmbedBlock(NotionBaseBlock):
 
     @property
     def height(self):
-        return self.attrs.get("height")
+        pass
 
     @height.setter
     def height(self, height):
-        if height is not None:
-            self.attrs["height"] = height
+        pass
 
     @property
     def width(self):
-        return self.attrs.get("width")
+        pass
 
     @width.setter
     def width(self, width):
-        if width is not None:
-            self.attrs["width"] = width
+        pass
 
     @property
     def source_url(self):
-        return self.attrs.get("display_source")
+        pass
 
     @source_url.setter
     def source_url(self, source_url):
-        if source_url is not None:
-            self.attrs["display_source"] = source_url
-            self.attrs["source"] = source_url
+        pass
 
 
 class NotionImageEmbedBlock(NotionEmbedBlock):
